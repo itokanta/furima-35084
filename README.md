@@ -36,6 +36,10 @@ Column | Type | Options
 7. birth_month | string | null: false
 8. birth_day | string | null: false
 
+### Association
+- has_many :items
+- has_many :buys
+
 ## itemsテーブル
 1. user | references | foreign_key: true
 2. item | references | foreign_key: true
@@ -47,6 +51,10 @@ Column | Type | Options
 8. from | string | null: false
 9. send_about | string | null: false
 10. price | integer | null: false
+
+### Association
+- belongs_to :user
+- has_one :buys
 
 ## buysテーブル
 1. item | references | foreign_key: true
@@ -60,3 +68,7 @@ Column | Type | Options
 9. card | integer | null: false
 10. card_deadline | integer | null: false
 11. card_security | integer | null: false
+
+### Association
+- belongs_to :user
+- belongs_to :items
