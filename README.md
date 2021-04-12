@@ -72,6 +72,7 @@ Things you may want to cover:
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|buy|references|foreign_key: true|
 |postal_code|string |null: false|
 |from_id    |integer|null: false|
 |cities     |string |null: false|
