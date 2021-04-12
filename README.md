@@ -46,13 +46,13 @@ Things you may want to cover:
 |------|----|-------|
 |user|references|foreign_key: true|
 |name    |string|null: false|
-|category_id|string|null: false|
-|status_id  |string|null: false|
-|description|string|null: false|
-|postage_id |string|null: false|
-|from_id    |string|null: false|
-|send_about_id|string|null: false|
-|price      |integer|null: false|
+|category_id|integer|null: false|
+|status_id  |integer|null: false|
+|description|text   |null: false|
+|postage_id |integer|null: false|
+|from_id    |integer|null: false|
+|send_about_id|integer|null: false|
+|price        |integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -73,7 +73,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string |null: false|
-|prefecture |integer|null: false|
+|from_id    |integer|null: false|
 |cities     |string |null: false|
 |address    |string |null: false|
 |build_name |string |none|
