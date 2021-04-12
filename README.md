@@ -29,13 +29,13 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |nickname |string |null: false|
-|email    |string |null: false|
-|password |string |null: false|
-|name     |string |null: false|
-|name_furigana|string|null: false|
-|birth_year   |string|null: false|
-|birth_month  |string|null: false|
-|birth_day    |string|null: false|
+|email    |string |null: false, unique: true|
+|encrypted_password|string |null: false|
+|second_name  |string|null: false|
+|first_name   |string|null: false|
+|second_furigana|string|null: false|
+|first_furigana |string|null: false|
+|date|string|null: false|
 
 ### Association
 - has_many :items
@@ -45,28 +45,25 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user|references|foreign_key: true|
-|item|references|foreign_key: true|
-|category|string|null: false|
-|status  |string|null: false|
+|name    |string|null: false|
+|category_id|string|null: false|
+|status_id  |string|null: false|
 |description|string|null: false|
-|postage    |string|null: false|
-|from       |string|null: false|
-|send_about |string|null: false|
+|postage_id |string|null: false|
+|from_id    |string|null: false|
+|send_about_id|string|null: false|
 |price      |integer|null: false|
 
 ### Association
-- belongs_to :user
+- belongs_to :users
 - has_one :buys
+- belongs_to :fixity
 
 ## buysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item|references|foreign_key: true|
 |user|references|foreign_key: true|
-|phone      |integer|null: false|
-|card       |integer|null: false|
-|card_deadline|integer|null: false|
-|card_security|integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -81,6 +78,7 @@ Things you may want to cover:
 |cities     |string |null: false|
 |address    |integer|null: false|
 |build_name |string |none|
+|phone      |integer|null: false|
 
 ### Association
 - belongs_to :buys
