@@ -35,7 +35,7 @@ Things you may want to cover:
 |first_name   |string|null: false|
 |second_furigana|string|null: false|
 |first_furigana |string|null: false|
-|date|string|null: false|
+|birthday|date|null: false|
 
 ### Association
 - has_many :items
@@ -55,9 +55,8 @@ Things you may want to cover:
 |price      |integer|null: false|
 
 ### Association
-- belongs_to :users
-- has_one :buys
-- belongs_to :fixity
+- belongs_to :user
+- has_one :buy
 
 ## buysテーブル
 |Column|Type|Options|
@@ -67,18 +66,18 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :items
-- has_one :addresses
+- belongs_to :item
+- has_one :address
 
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer|null: false|
-|prefecture |string |null: false|
+|postal_code|string |null: false|
+|prefecture |integer|null: false|
 |cities     |string |null: false|
-|address    |integer|null: false|
+|address    |string |null: false|
 |build_name |string |none|
-|phone      |integer|null: false|
+|phone      |string |null: false|
 
 ### Association
-- belongs_to :buys
+- belongs_to :buy
