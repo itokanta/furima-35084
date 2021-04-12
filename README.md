@@ -24,51 +24,63 @@ Things you may want to cover:
 * ...
 
 # テーブル設計
-Column | Type | Options
 
 ## usersテーブル
-1. nickname | string | null: false
-2. email | string | null: false
-3. password | string | null: false
-4. name | string | null: false
-5. name_furigana | string | null: false
-6. birth_year | string | null: false
-7. birth_month | string | null: false
-8. birth_day | string | null: false
+|Column|Type|Options|
+|------|----|-------|
+|nickname |string |null: false|
+|email    |string |null: false|
+|password |string |null: false|
+|name     |string |null: false|
+|name_furigana|string|null: false|
+|birth_year   |string|null: false|
+|birth_month  |string|null: false|
+|birth_day    |string|null: false|
 
 ### Association
 - has_many :items
 - has_many :buys
 
 ## itemsテーブル
-1. user | references | foreign_key: true
-2. item | references | foreign_key: true
-3. image | ActiveStorage使用
-4. category | string | null: false
-5. status | string | null: false
-6. description | string | null: false
-7. postage | string | null: false
-8. from | string | null: false
-9. send_about | string | null: false
-10. price | integer | null: false
+|Column|Type|Options|
+|------|----|-------|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
+|category|string|null: false|
+|status  |string|null: false|
+|description|string|null: false|
+|postage    |string|null: false|
+|from       |string|null: false|
+|send_about |string|null: false|
+|price      |integer|null: false|
 
 ### Association
 - belongs_to :user
 - has_one :buys
 
 ## buysテーブル
-1. item | references | foreign_key: true
-2. user | references | foreign_key: true
-3. postal_code | integer | null: false
-4. prefecture | string | null: false
-5. cities | string | null: false
-6. address | integer | null: false
-7. build_name | string | none
-8. phone | integer | null: false
-9. card | integer | null: false
-10. card_deadline | integer | null: false
-11. card_security | integer | null: false
+|Column|Type|Options|
+|------|----|-------|
+|item|references|foreign_key: true|
+|user|references|foreign_key: true|
+|phone      |integer|null: false|
+|card       |integer|null: false|
+|card_deadline|integer|null: false|
+|card_security|integer|null: false|
 
 ### Association
 - belongs_to :user
 - belongs_to :items
+- has_one :addresses
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|null: false|
+|prefecture |string |null: false|
+|cities     |string |null: false|
+|address    |integer|null: false|
+|build_name |string |none|
+
+### Association
+- belongs_to :buys
