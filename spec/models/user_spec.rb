@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
         @user.first_name = 'あア阿'
         expect(@user).to be_valid
       end
-      it 'second_furiganaとfirst_furiganaが全角(カタカナ)で入力されている' do
+      it 'second_furiganaとfirst_furiganaが全角(カタカナ)で入力されていれば登録できる' do
         @user.second_furigana = 'カナ'
         @user.first_furigana = 'カナ'
         expect(@user).to be_valid
@@ -64,6 +64,9 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailは@を含んでいないと登録できない' do
+        @user.email = 'eeeeeee'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが5文字以下では登録できない' do
         @user.password = 'aa000'
@@ -82,6 +85,38 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = '000000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
+      end
+      it 'passwordが数字のみでは登録できない' do
+        @user.password = 'ａａａ０００'
+        @user.password_confirmation = 'ａａａ０００'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')
+      end
+      it 'second_nameが半角だと入力できない' do
+        @user.second_name = 'ｱｱｱ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Second name is invalid')
+      end
+      it 'first_nameが半角だと登録できない' do
+        @user.first_name = 'ｱｱｱ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name is invalid')
+      end
+      it 'second_furiganaが半角だと登録できない' do
+        @user.second_furigana = 'ｱｱｱ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Second furigana is invalid')
+      end
+      it 'first_furiganaが半角だと登録できない' do
+        @user.first_furigana = 'ｱｱｱ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First furigana is invalid')
+      end
+      it 'birthdayが空だと登録できない' do
+        @user.birthday = ''
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
     end
   end
