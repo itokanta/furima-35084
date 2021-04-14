@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :second_furigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :first_furigana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, format: { with: PASSWORD_REGEX}
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, format: { with: PASSWORD_REGEX }
 end
