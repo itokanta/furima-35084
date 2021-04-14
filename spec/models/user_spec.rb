@@ -35,6 +35,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
+
     context '新規登録できないとき' do
       it 'nicknameが空では登録できない' do
         @user.nickname = ''
@@ -112,10 +113,50 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('First furigana is invalid')
       end
+      it 'second_nameが英数字だと登録できない' do
+        @user.second_name = 'aa00'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Second name is invalid')
+      end
+      it 'first_nameが英数字だと登録できない' do
+        @user.first_name = 'aa00'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name is invalid')
+      end
+      it 'second_furiganaが漢字・ひらがなだと登録できない' do
+        @user.second_furigana = 'ああ阿阿'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Second furigana is invalid')
+      end
+      it 'first_furiganaが漢字・ひらがなだと登録できない' do
+        @user.first_furigana = 'ああ阿阿'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First furigana is invalid')
+      end
       it 'birthdayが空だと登録できない' do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
+      it 'second_nameが空だと登録できない' do
+        @user.second_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Second name can't be blank")
+      end
+      it 'first_nameが空だと登録できない' do
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+      it 'second_furiganaが空だと登録できない' do
+        @user.second_furigana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Second furigana can't be blank")
+      end
+      it 'first_furigana' do
+        @user.first_furigana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First furigana can't be blank")
       end
     end
   end
