@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :postage_id,  null: false
       t.integer :from_id,     null: false
       t.integer :send_about_id, null: false
-      t.integer :price.         unll: false
+      t.integer :price,         null: false
 
       t.timestamps
     end
