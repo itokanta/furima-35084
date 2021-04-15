@@ -123,12 +123,12 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
-      it 'second_furiganaがカタカナ以外だと登録できない' do
+      it 'second_furiganaが漢字・ひらがなだと登録できない' do
         @user.second_furigana = 'ああ阿阿'
         @user.valid?
         expect(@user.errors.full_messages).to include('Second furigana is invalid')
       end
-      it 'first_furiganaがカタカナ以外だと登録できない' do
+      it 'first_furiganaが漢字・ひらがなだと登録できない' do
         @user.first_furigana = 'ああ阿阿'
         @user.valid?
         expect(@user.errors.full_messages).to include('First furigana is invalid')
