@@ -153,7 +153,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Second furigana can't be blank")
       end
-      it 'first_furigana' do
+      it 'first_furiganaが空だと登録できない' do
         @user.first_furigana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First furigana can't be blank")
