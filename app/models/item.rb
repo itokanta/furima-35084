@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :status_id,   numericality: { other_than: 1 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :postage_id,  numericality: { other_than: 1 }
-  validates :from_id,     numericality: { other_than: 1 }
+  validates :from_id,     numericality: { other_than: 0 }
   validates :send_about_id, numericality: { other_than: 1 }
   validates :price, presence: true, length: { in: 300..9999999 }
 end
