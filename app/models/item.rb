@@ -16,4 +16,5 @@ class Item < ApplicationRecord
   validates :from_id,     numericality: { other_than: 0 }
   validates :send_about_id, numericality: { other_than: 1 }
   validates :price, presence: true, length: { in: 300..9999999 }
+  validates :image, presence: true
 end
