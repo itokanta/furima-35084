@@ -51,7 +51,7 @@ Things you may want to cover:
 |description|text   |null: false|
 |postage_id |integer|null: false|
 |from_id    |integer|null: false|
-|send_about_id|integer|null: false|
+|sendabout_id|integer|null: false|
 |price        |integer|null: false|
 
 ### Association

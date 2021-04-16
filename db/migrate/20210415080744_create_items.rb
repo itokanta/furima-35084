@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.text    :description, null: false
       t.integer :postage_id,  null: false
       t.integer :from_id,     null: false
-      t.integer :send_about_id, null: false
+      t.integer :sendabout_id, null: false
       t.integer :price,         null: false
 
       t.timestamps
