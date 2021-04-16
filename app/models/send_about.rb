@@ -1,4 +1,4 @@
-class send_about < ActiveHash::Base
+class Send_about < ActiveHash::Base
   self.date = [
     { id: 1, name: '---' },
     { id: 2, name: '1~2日で発送' },
