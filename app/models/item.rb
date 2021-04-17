@@ -15,6 +15,6 @@ class Item < ApplicationRecord
   validates :postage_id,  numericality: { other_than: 1 }
   validates :from_id,     numericality: { other_than: 0 }
   validates :sendabout_id, numericality: { other_than: 1 }
-  validates :price, presence: true, length: { in: 300..9999999 }
+  validates :price, presence: true, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :image, presence: true
 end
