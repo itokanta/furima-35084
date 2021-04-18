@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item= FactoryBot.build(:item)
+    @item = FactoryBot.build(:item)
   end
 
   describe '商品出品' do
@@ -34,47 +34,47 @@ RSpec.describe Item, type: :model do
       it 'category_idが空では保存できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include('Category is not a number')
       end
       it 'status_idが空では保存できない' do
         @item.status_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status is not a number")
+        expect(@item.errors.full_messages).to include('Status is not a number')
       end
       it 'postage_idが空では保存できない' do
         @item.postage_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Postage is not a number")
+        expect(@item.errors.full_messages).to include('Postage is not a number')
       end
       it 'from_idが空では保存できない' do
         @item.from_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("From is not a number")
+        expect(@item.errors.full_messages).to include('From is not a number')
       end
       it 'sendabout_idが空では保存できない' do
         @item.sendabout_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sendabout is not a number")
+        expect(@item.errors.full_messages).to include('Sendabout is not a number')
       end
       it 'priceが空では保存できない' do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it  'priceが300未満では保存できない' do
+      it 'priceが300未満では保存できない' do
         @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10,000,000以上では保存できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceが半角数字以外では保存できない' do
         @item.price = 'あ１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
     end
   end

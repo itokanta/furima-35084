@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   with_options presence: true do
     validates :nickname
     with_options format: { with: /\A[ぁ-んァ-ン一-龥々ー]/ } do
@@ -11,7 +11,7 @@ class User < ApplicationRecord
       validates :first_name
     end
     with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
-      validates :second_furigana 
+      validates :second_furigana
       validates :first_furigana
     end
     validates :birthday
