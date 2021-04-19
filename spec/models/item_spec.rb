@@ -47,14 +47,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Postage must be other than 1')
       end
       it 'from_idが「---」では保存できない' do
-        @item.from_id = 0
+        @item.from_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('From must be other than 0')
+        expect(@item.errors.full_messages).to include('From must be other than 1')
       end
       it 'sendabout_idが「---」では保存できない' do
-        @item.sendabout_id = 0
+        @item.sendabout_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Sendabout must be other than 0')
+        expect(@item.errors.full_messages).to include('Sendabout must be other than 1')
       end
       it 'priceが空では保存できない' do
         @item.price = ''
