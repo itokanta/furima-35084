@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '販売価格が¥300~¥9,999,999の間であり、かつ半角数字のみで入力されていれば保存できる' do
-        @item.price = 10000
+        @item.price = 10_000
         expect(@item).to be_valid
       end
     end
@@ -67,7 +67,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10,000,000以上では保存できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
