@@ -14,9 +14,9 @@ class Item < ApplicationRecord
     validates :status_id
     validates :sendabout_id
     validates :postage_id
+    validates :from_id
   end
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :from_id,     numericality: { other_than: 0 }
   validates :price, presence: true, format: { with: /\A[0-9]+\z/ },
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true
