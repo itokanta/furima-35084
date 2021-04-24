@@ -2,12 +2,14 @@ class BuysController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # @item = Item.find(params[:id])
     @buy_address = BuyAddress.new(buy_params)
     if @buy_address.valid?
       buy_address.save
       redirect_to root_path
     else
       render :index
+    end
   end
 
   private
