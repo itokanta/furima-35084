@@ -2,9 +2,14 @@ class BuysController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @item = Item.find(params[:item_id])
+    @buy_address = BuyAddress.new
+  end
+
+  def create
     @buy_address = BuyAddress.new(buy_params)
     if @buy_address.valid?
-      buy_address.save
+      @buy_address.save
       redirect_to root_path
     else
       render :index
@@ -14,6 +19,6 @@ class BuysController < ApplicationController
   private
   
   def buy_params
-    params.require(:buy_address).permit(:postal_code, :from_id, :cities, :address, :build_name, :phone).merge(user_id: current_user.id, item_id: params[:id])
+    params.require(:buy_address).permit(:postal_code, :from_id, :cities, :address, :build_name, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end
