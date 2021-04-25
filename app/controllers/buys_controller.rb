@@ -1,8 +1,9 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
+  before_action :item_choose
+  before_action :move_to_index
 
   def index
-    @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new
   end
 
@@ -20,5 +21,15 @@ class BuysController < ApplicationController
   
   def buy_params
     params.require(:buy_address).permit(:postal_code, :from_id, :cities, :address, :build_name, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def item_choose
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_index
+    if current_user == @item.user
+      redirect_to root_path
+    end
   end
 end
