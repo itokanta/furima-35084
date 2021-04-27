@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :buy_address do
-    # number {4242424242424242}
-    # exp_month {3}
-    # exp_year {23}
-    # cvc {123}
+    token {ENV["PAYJP_PUBLIC_KEY"]}
     postal_code {'123-4567'}
     from_id {3}
     city {'横浜市緑区'}

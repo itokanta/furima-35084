@@ -65,6 +65,11 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Phone is invalid")
       end
+      it 'tokenが空では保存できない' do
+        @buy_address.token = ''
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
