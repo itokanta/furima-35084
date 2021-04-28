@@ -13,13 +13,17 @@ RSpec.describe BuyAddress, type: :model do
       it '全ての値が正しく入力されていれば保存できること' do
         expect(@buy_address).to be_valid
       end
+      it 'build_nameが空でもl保存できる' do
+        @buy_address.build_name = ''
+        expect(@buy_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
       it 'postal_codeが空だと保存できない' do
         @buy_address.postal_code = ''
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@buy_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeにハイフンが含まれていないと保存できない' do
         @buy_address.postal_code = '11111111'
