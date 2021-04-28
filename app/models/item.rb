@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :from
   belongs_to :sendabout
   belongs_to :user
+  has_one :buy
   has_one_attached :image
 
   validates :name, presence: true, length: { maximum: 40 }
