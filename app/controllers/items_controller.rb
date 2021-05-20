@@ -1,16 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :item_choose, except: [:index, :new, :create]
-  before_action :search_item, only: [:index, :search]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :move_to_index_sold, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
-  end
-
-  def search
-    @results = @p.result.includes(:items)
   end
 
   def new
@@ -54,10 +49,6 @@ class ItemsController < ApplicationController
   
   def item_choose
     @item = Item.find(params[:id])
-  end
-
-  def search_item
-    @p = Item.ransack(params[:q])
   end
 
   def move_to_index
